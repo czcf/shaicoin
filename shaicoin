@@ -1,0 +1,26 @@
+# Step 1: Install the following 
+sudo apt install build-essential libtool autotools-dev automake pkg-config bsdmainutils python3 libevent-dev libboost-dev libsqlite3-dev -y
+
+# Step 2: Clone the repo of shaicoin
+git clone https://github.com/shaicoin/shaicoin.git
+
+# Step 3: Enter shaicoin and build it
+cd shaicoin
+./autogen.sh
+./configure
+make -j $proc # for example: make -j 16
+
+# Step 4: Run shaicoind
+cd src
+./shaicoind
+# Step 5: Use ./shaicoin-cli to get a new wallet and address
+./shaicoin-cli createwallet "yourwalletname"
+./shaicoin-cli loadwallet "yourwalletname"
+./shaicoin-cli getnewaddress
+
+# Now you have a shaicoin address
+# Step 6: restart shaicoind using -moneyplz arg.
+./shaicoind -moneyplz=sh1xxxxxx # put your address here.
+
+# Check your balance
+./shaicoin-cli getwalletinfo # this will show all your balance.
