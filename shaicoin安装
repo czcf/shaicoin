@@ -1,0 +1,17 @@
+git clone https://github.com/shaicoin/shaicoin.git
+cd shaicoin
+./autogen.sh
+./configure
+make -j 4
+第三步、运行shaicoind（命令如下）
+cd ~/shaicoin/src
+./shaicoind  -daemon
+第四步、生成钱包和地址（命令如下）
+./shaicoin-cli createwallet "你的钱包名称"
+./shaicoin-cli loadwallet "你的钱包名称"
+./shaicoin-cli getnewaddress
+第五步、重启shaicoind节点，开始挖矿 （SOLO挖矿模式，如何加入矿池挖矿，可以忽略此步）
+./shaicoind -moneyplz=换成你的地址
+
+第六步、查询你的钱包余额（命令如下）
+./shaicoin-cli getwalletinfo
